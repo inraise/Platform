@@ -21,7 +21,7 @@ class MainScreenReducer(
                 viewModelScope.launch {
                     setState(oldState.copy(isLoading = true, data = TopHeadlinesModel()))
                     try {
-                        useCase.invoke().let { data ->
+                        useCase.invoke(textData = category).let { data ->
                             if (data.status != "error") {
                                 sendEvent(MainScreenEvent.ShowData(data = data))
                             } else {

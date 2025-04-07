@@ -7,7 +7,11 @@ import javax.inject.Inject
 
 class DomainRepositoryImpl @Inject constructor(private val newsApi: NewsApi) :
     DomainRepository {
-    override suspend fun getTopHeadlines(): TopHeadlinesModel {
-        return newsApi.getTopHeadlines()
+    override suspend fun getTopHeadlines(category: String): TopHeadlinesModel {
+        return newsApi.getTopHeadlines(category = category)
+    }
+
+    override suspend fun getSearchNews(q: String): TopHeadlinesModel {
+        return newsApi.getSearchNews(q = q)
     }
 }
