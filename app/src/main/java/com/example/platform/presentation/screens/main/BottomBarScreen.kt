@@ -27,7 +27,6 @@ fun BottomBarScreen(
     val screens = listOf(
         BottomNavigationItems.HomeScreen,
         BottomNavigationItems.SearchScreen,
-        BottomNavigationItems.BookmarkScreen,
         BottomNavigationItems.SettingsScreen
     )
 

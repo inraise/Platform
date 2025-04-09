@@ -67,13 +67,13 @@ fun SearchScreen(navController: NavController, searchViewModel: SearchViewModel)
                         fontWeight = FontWeight.Medium,
                         fontFamily = publicoFontFamily,
                         color = MainBlack,
-                        fontSize = 12.sp
+                        fontSize = 15.sp
                     )
                 },
                 leadingIcon = {
                     Image(
                         modifier = Modifier
-                            .size(20.dp)
+                            .size(22.dp)
                             .clickable {
                                 searchViewModel.getSearchNews(searchText)
                                 context.hideKeyboard()
@@ -85,12 +85,12 @@ fun SearchScreen(navController: NavController, searchViewModel: SearchViewModel)
                 value = searchText, onValueChange = { searchText = it },
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(50.dp),
+                    .height(60.dp),
                 textStyle = TextStyle(
                     fontWeight = FontWeight.Medium,
                     fontFamily = publicoFontFamily,
                     color = MainBlack,
-                    fontSize = 12.sp
+                    fontSize = 15.sp
                 ),
                 shape = RoundedCornerShape(40.dp),
                 keyboardActions = KeyboardActions(onDone = {

@@ -19,6 +19,8 @@ import androidx.navigation.compose.rememberNavController
 import com.example.platform.presentation.navigation.SetupNavigationGraph
 import com.example.platform.presentation.screens.main.BottomBarScreen
 import com.example.platform.presentation.screens.search.SearchViewModel
+import com.example.platform.presentation.screens.weather.LocationViewModel
+import com.example.platform.presentation.screens.weather.WeatherViewModel
 import com.example.platform.presentation.theme.PlatformTheme
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.delay
@@ -27,6 +29,8 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     private val searchViewModel: SearchViewModel by viewModels()
+    private val locationViewModel: LocationViewModel by viewModels()
+    private val weatherViewModel: WeatherViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         val splashscreen = installSplashScreen()
@@ -39,6 +43,9 @@ class MainActivity : ComponentActivity() {
         }
         enableEdgeToEdge()
         setContent {
+            weatherViewModel.getWeather(60.053226, 30.325743)
+            locationViewModel.getLocation(60.053226, 30.325743)
+
             PlatformTheme {
                 val navHost = rememberNavController()
                 var buttonsVisible by remember { mutableStateOf(true) }
@@ -55,6 +62,8 @@ class MainActivity : ComponentActivity() {
                     Box(modifier = Modifier.padding(paddingValues)) {
                         SetupNavigationGraph(
                             navHostController = navHost,
+                            locationViewModel = locationViewModel,
+                            weatherViewModel = weatherViewModel,
                             searchViewModel = searchViewModel
                         ) { isVisible ->
                             buttonsVisible = isVisible

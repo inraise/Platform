@@ -51,7 +51,7 @@ fun NewsScreen(data: Article, navController: NavController) {
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(top = 30.dp),
-            horizontalArrangement = Arrangement.SpaceBetween,
+            horizontalArrangement = Arrangement.Start,
             verticalAlignment = Alignment.CenterVertically
         ) {
             Image(
@@ -65,17 +65,6 @@ fun NewsScreen(data: Article, navController: NavController) {
                         }
                     },
                 painter = painterResource(R.drawable.back_icon),
-                contentDescription = ""
-            )
-
-            Image(
-                modifier = Modifier
-                    .padding(end = 25.dp)
-                    .fillMaxWidth(0.1f)
-                    .clickable {
-
-                    },
-                painter = painterResource(R.drawable.bookmark_icon),
                 contentDescription = ""
             )
         }

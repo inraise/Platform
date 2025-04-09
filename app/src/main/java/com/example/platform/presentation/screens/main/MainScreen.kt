@@ -101,17 +101,25 @@ fun MainScreenContent(
                 Image(
                     modifier = Modifier
                         .fillMaxWidth(0.2f)
-                        .clickable { },
-                    painter = painterResource(R.drawable.weather_icon),
+                        .clickable {
+                            navController.navigate(Screens.WeatherScreenType.rout) {
+                                popUpTo(Screens.WeatherScreenType.rout) {
+                                    saveState = true
+                                }
+                            }
+                        },
+                    painter = painterResource(R.drawable.sunny),
                     contentDescription = ""
                 )
             }
         }
 
         item {
-            LazyRow(modifier = Modifier
-                .fillMaxWidth()
-                .padding(bottom = 10.dp)) {
+            LazyRow(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(bottom = 10.dp)
+            ) {
                 items(categoryList) { item ->
                     Column {
                         Text(
@@ -133,7 +141,8 @@ fun MainScreenContent(
                         )
 
                         Spacer(
-                            modifier = Modifier.fillMaxWidth()
+                            modifier = Modifier
+                                .fillMaxWidth()
                                 .width(165.dp)
                                 .height(2.dp)
                                 .background(if (category != item) Color.Black else MainOrange)

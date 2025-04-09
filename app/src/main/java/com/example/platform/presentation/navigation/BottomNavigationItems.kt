@@ -18,9 +18,4 @@ sealed class BottomNavigationItems(val rout: String, val unselectedIcon: Int, va
         unselectedIcon = R.drawable.settings_unselected,
         selectedIcon = R.drawable.settings_selected
     )
-    object BookmarkScreen : BottomNavigationItems(
-        rout = "bookmark_screen",
-        unselectedIcon = R.drawable.bookmark_unselected,
-        selectedIcon = R.drawable.bookmark_selected
-    )
 }
