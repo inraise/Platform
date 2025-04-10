@@ -25,6 +25,8 @@ fun SetupNavigationGraph(
     locationViewModel: LocationViewModel,
     weatherViewModel: WeatherViewModel,
     searchViewModel: SearchViewModel,
+    lat: Double,
+    lon: Double,
     onBottomBarVisibilityChanged: (Boolean) -> Unit
 ) {
     NavHost(
@@ -41,7 +43,7 @@ fun SetupNavigationGraph(
         }
         composable(BottomNavigationItems.SettingsScreen.rout) {
             onBottomBarVisibilityChanged(true)
-            SettingsScreen()
+            SettingsScreen(lat, lon)
         }
         composable(Screens.NewsScreenType.rout) {
             onBottomBarVisibilityChanged(false)
@@ -49,7 +51,7 @@ fun SetupNavigationGraph(
         }
         composable(Screens.WeatherScreenType.rout) {
             onBottomBarVisibilityChanged(false)
-            WeatherScreen(navHostController, locationViewModel, weatherViewModel)
+            WeatherScreen(navHostController, locationViewModel, weatherViewModel, lat + lon)
         }
     }
 }

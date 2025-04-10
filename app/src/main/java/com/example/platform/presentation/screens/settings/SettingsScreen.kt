@@ -26,7 +26,7 @@ import com.example.platform.presentation.theme.MainBlack
 import com.example.platform.presentation.theme.publicoFontFamily
 
 @Composable
-fun SettingsScreen() {
+fun SettingsScreen(lat: Double, lon: Double) {
     Column(
         modifier = Modifier
             .padding(15.dp)
@@ -103,7 +103,7 @@ fun SettingsScreen() {
             )
 
             Text(
-                text = "0.0 0.0",
+                text = "$lat $lon",
                 fontFamily = publicoFontFamily,
                 fontWeight = FontWeight.Medium,
                 fontSize = 15.sp,
